@@ -5,15 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Barbearia Barber DUO</title>
-
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Pequeno ajuste visual para o formulário */
         .booking-form {
             max-width: 720px;
             margin: 18px auto 0;
@@ -102,10 +99,7 @@
         }
     </style>
 </head>
-
 <body>
-
-    <!-- CABEÇALHO -->
     <header>
         <div class="header-container">
             <a href="#" class="logo-brand">
@@ -125,8 +119,6 @@
     </header>
 
     <div class="content-wrapper">
-
-        <!-- HERO -->
         <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">Corte com assinatura, com um ambiente agradável.</h1>
@@ -138,8 +130,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- SERVIÇOS -->
         <section id="servicos" class="section">
             <div class="container">
                 <h2 class="section-title">Serviços</h2>
@@ -194,7 +184,6 @@
                 </div>
             </div>
         </section> 
-                <!-- EQUIPE -->
                 <section id="equipe" class="section" style="padding-top:30px;">
                     <div class="container">
                         <h2 class="section-title">Nossa Equipe</h2>
@@ -212,8 +201,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- GALERIA -->
                 <section id="galeria" class="section" style="padding-top:40px;">
                     <div class="container">
                         <h2 class="section-title">Galeria</h2>
@@ -225,8 +212,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- CONTATO + AGENDAMENTO (AQUI) -->
                 <section id="contato" class="section" style="padding-bottom:40px;">
                     <div class="container" style="text-align:center;">
                         <h2 class="section-title">Contato & Agendamento</h2>
@@ -234,7 +219,6 @@
                             agendamento. Para garantir seu horário recomendamos agendar via formulário abaixo, WhatsApp
                             ou telefone.</p>
 
-                        <!-- FORMULÁRIO DE AGENDAMENTO -->
                         <form id="booking-form" class="booking-form" onsubmit="handleBookingWhatsapp(event)">
                             <div class="booking-row">
                                 <div class="field">
@@ -303,8 +287,6 @@
                             <div class="booking-note">A solicitar aparecerá direto no WhatsApp do barbeiro. Cheque se a
                                 data/horário estão corretos antes de enviar.</div>
                         </form>
-
-                        <!-- contatos rápidos -->
                         <div class="contact-cards" style="margin-top:18px;">
                             <div class="contact-card">
                                 <i class="fa-solid fa-phone"></i>
@@ -330,9 +312,7 @@
                     </div>
                 </section>
 
-            </div> <!-- fim content-wrapper -->
-
-            <!-- RODAPÉ -->
+            </div>
             <footer>
                 <div class="footer-container">
                     <div>
@@ -360,13 +340,9 @@
                     <div id="modal-body"></div>
                 </div>
             </div>
-
-            <!-- TOAST -->
             <div id="toast" class="toast"></div>
 
-            <!-- SCRIPTS -->
             <script>
-                // Número do barbeiro (formato internacional sem '+')
                 const BARBER_WHATSAPP = '557598078753';
 
                 const bookingForm = document.getElementById('booking-form');
@@ -381,7 +357,6 @@
                     }, 4500);
                 }
 
-                // Gera a mensagem e abre o WhatsApp (usado no submit principal)
                 function handleBookingWhatsapp(e) {
                     e.preventDefault();
 
@@ -399,7 +374,6 @@
                         return;
                     }
 
-                    // Monta a mensagem com quebras de linha
                     let msg = `Olá, gostaria de agendar um horário 💈%0A%0A`;
                     msg += `👤 Nome: ${encodeURIComponent(client_name)}%0A`;
                     msg += `📱 WhatsApp: ${encodeURIComponent(client_phone)}%0A`;
@@ -413,16 +387,15 @@
 
                     const url = `https://wa.me/${557598078753}?text=${msg}`;
 
-                    // Tenta abrir em nova aba (WhatsApp Web / app)
+                    
                     window.open(url, '_blank');
 
                     showToast('Abrindo WhatsApp... confirme o envio no app.', 'success');
 
-                    // opcional: limpar o formulário
                     bookingForm.reset();
                 }
 
-                // Botão alternativo: abre WhatsApp sem submissão (mesma lógica)
+
                 function openWhatsAppDirect() {
                     const client_name = document.getElementById('client-name').value.trim();
                     const client_phone = document.getElementById('client-phone').value.trim();
@@ -454,9 +427,7 @@
                 }
             </script>
 
-            <!-- SCRIPTS EXISTENTES (modal dos serviços, observer etc.) -->
             <script>
-                // ----- Modal de detalhes dos serviços -----
                 const serviceCards = document.querySelectorAll('.service-card');
                 const modalOverlay = document.getElementById('service-modal-overlay');
                 const modalBody = document.getElementById('modal-body');
@@ -491,7 +462,6 @@
                     if (event.target === modalOverlay) closeModal();
                 });
 
-                // ----- animação de rolagem (IntersectionObserver) -----
                 const cardsToAnimate = document.querySelectorAll('.service-card');
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
@@ -508,3 +478,4 @@
 
 
 </html>
+
