@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barbearia Barber DUO</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Pequeno ajuste visual para o formulário */
+        .booking-form {
+            max-width: 720px;
+            margin: 18px auto 0;
+            background: #0f0f10;
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .booking-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .booking-row .field {
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .booking-form label {
+            font-size: .85rem;
+            color: #A0A0A0;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .booking-form input,
+        .booking-form select,
+        .booking-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: #0b0b0b;
+            color: #EAEAEA;
+        }
+
+        .booking-form button {
+            margin-top: 10px;
+            padding: 12px 18px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            background: #25D366;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .booking-note {
+            font-size: .9rem;
+            color: #A0A0A0;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .small-btn {
+            background: transparent;
+            color: #A0A0A0;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #111;
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            display: none;
+            z-index: 4000;
+        }
+
+        .toast.success {
+            border-left: 4px solid #4caf50;
+        }
+
+        .toast.error {
+            border-left: 4px solid #f44336;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-brand">
+                <i class="fa-solid fa-scissors"></i>
+                <span>Barbearia Barber DUO</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+
+        <!-- HERO -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Corte com assinatura. Barba perfeita.</h1>
+                <p class="hero-sub">Profissionais experientes, ambiente acolhedor e estilo que combina com você. Agende
+                    online ou passe na barbearia.</p>
+                <div class="hero-ctas">
+                    <a href="#servicos" class="btn btn-primary">Ver Serviços</a>
+                    <a href="#contato" class="btn btn-secondary"><i class="fa-solid fa-calendar-check"></i> Agendar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVIÇOS -->
+        <section id="servicos" class="section">
+            <div class="container">
+                <h2 class="section-title">Serviços</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Corte Social</h4>
+                        <p class="service-summary">Corte tradicional, acabamento com navalha opcional. Indicado para
+                            quem busca elegância e discrição.</p>
+                        <div class="full-text" style="display:none;">
+                            <p>O Corte Clássico modelo conforme pedido, acabamento com tesoura e máquina. Pode ser
+                                finalizado com navalha no contorno para um acabamento mais limpo. Tempo médio: 20-40
+                                minutos.</p>
+                            <p>Preço: R$ 15</p>
+                        </div> <a class="service-link">Saiba mais</a>
+                    </div>
+                    <div class="service-card">
+                        <h4>Degrade </h4>
+                        <p class="service-summary">Fade/Degrade com transições limpas e acabamento personalizado.</p>
+                        <div class="full-text" style="display:none;">
+                            <p>Trabalhamos várias técnicas de degrade: baixo, médio e alto. Inclui modelagem,
+                                finalização com máquina e tesoura. Excelente para estilos modernos e urbanos.</p>
+                            <p>Tempo médio: 20-40 minutos. Preço: R$ 15</p>
+                        </div> <a class="service-link">Saiba mais</a>
+                    </div>
+                    <div class="service-card">
+                        <h4>Barba Completa</h4>
+                        <p class="service-summary">Modelagem e acabamento com navalha. Resultado limpo e definido.</p>
+                        <div class="full-text" style="display:none;">
+                            <p>Inclui limpeza, aplicação de óleo ou balm, modelagem e acabamento com navalha. Ideal para
+                                quem cuida do visual com regularidade. Oferecemos também produtos para manutenção em
+                                casa.</p>
+                            <p>Tempo médio: 10-15 minutos. Preço: R$ 5</p>
+                        </div> <a class="service-link">Saiba mais</a>
+                    </div>
+                    <div class="service-card">
+                        <h4>Combo Corte + Barba</h4>
+                        <p class="service-summary">Pacote com corte e barba com desconto especial.</p>
+                        <div class="full-text" style="display:none;">
+                            <p>Combo ideal para quem quer renovar o visual por completo. Inclui corte, barba,
+                                finalização e aconselhamento de estilo. Peça o serviço combinado para economia.</p>
+                            <p>Tempo médio: 30 - 45 minutos. Preço: R$ 20</p>
+                        </div> <a class="service-link">Saiba mais</a>
+                    </div>
+                    <div class="service-card">
+                        <h4>Sobrancelha</h4>
+                        <p class="service-summary">Ajuste de sobrancelhas masculinas para um rosto mais definido.</p>
+                        <div class="full-text" style="display:none;">
+                            <p>Design com navalha alinhar o formato natural do rosto. Também trabalhamos limpeza de pele
+                                rápida quando solicitado.</p>
+                        </div> <a class="service-link">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+        </section> 
+                <!-- EQUIPE -->
+                <section id="equipe" class="section" style="padding-top:30px;">
+                    <div class="container">
+                        <h2 class="section-title">Nossa Equipe</h2>
+                        <div class="team-grid">
+                            <div class="team-card">
+                                <img src="heverton.jpg" alt="Barbeiro 1">
+                                <h5>Heverton - Barbeiro</h5>
+                                <p>17 anos</p>
+                            </div>
+                            <div class="team-card">
+                                <img src="pedro.png" alt="Barbeiro 2">
+                                <h5>Pedro - Barbeiro</h5>
+                                <p>17 anos</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- GALERIA -->
+                <section id="galeria" class="section" style="padding-top:40px;">
+                    <div class="container">
+                        <h2 class="section-title">Galeria</h2>
+                        <div class="gallery-grid">
+                            <img src="1.jpg" alt="corte1">
+                            <img src="4.jpg" alt="corte2">
+                            <img src="2.jpg" alt="barba1">
+                            <img src="3.jpg" alt="ambiente">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONTATO + AGENDAMENTO (AQUI) -->
+                <section id="contato" class="section" style="padding-bottom:40px;">
+                    <div class="container" style="text-align:center;">
+                        <h2 class="section-title">Contato & Agendamento</h2>
+                        <p style="color:var(--muted); max-width:700px; margin:10px auto 20px;">Atendemos com ou sem
+                            agendamento. Para garantir seu horário recomendamos agendar via formulário abaixo, WhatsApp
+                            ou telefone.</p>
+
+                        <!-- FORMULÁRIO DE AGENDAMENTO -->
+                        <form id="booking-form" class="booking-form" onsubmit="handleBookingWhatsapp(event)">
+                            <div class="booking-row">
+                                <div class="field">
+                                    <label for="client-name">Seu nome</label>
+                                    <input id="client-name" name="client_name" type="text" placeholder="Nome completo"
+                                        required>
+                                </div>
+                                <div class="field">
+                                    <label for="client-phone">Telefone (WhatsApp)</label>
+                                    <input id="client-phone" name="client_phone" type="tel"
+                                        placeholder="(75) 9 9999-9999" required>
+                                </div>
+                            </div>
+
+                            <div class="booking-row">
+                                <div class="field">
+                                    <label for="client-email">E-mail (opcional)</label>
+                                    <input id="client-email" name="client_email" type="email"
+                                        placeholder="seu@email.com">
+                                </div>
+                                <div class="field">
+                                    <label for="service-select">Serviço</label>
+                                    <select id="service-select" name="service" required>
+                                        <option value="Corte Social">Corte Social</option>
+                                        <option value="Degrade">Degrade</option>
+                                        <option value="Barba Completa">Barba Completa</option>
+                                        <option value="Combo Corte + Barba">Combo Corte + Barba</option>
+                                        <option value="Sobrancelha">Sobrancelha</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="booking-row">
+                                <div class="field">
+                                    <label for="date">Data</label>
+                                    <input id="date" name="date" type="date" required>
+                                </div>
+                                <div class="field">
+                                    <label for="time">Horário</label>
+                                    <input id="time" name="time" type="time" required>
+                                </div>
+                            </div>
+
+                            <div class="booking-row">
+                                <div class="field">
+                                    <label for="barber">Barbeiro (opcional)</label>
+                                    <select id="barber" name="barber">
+                                        <option value="Indiferente">Indiferente</option>
+                                        <option value="Heverton">Heverton</option>
+                                        <option value="Pedro">Pedro</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label for="notes">Observações</label>
+                                    <input id="notes" name="notes" type="text"
+                                        placeholder="Ex: preferência por navalha, alergias...">
+                                </div>
+                            </div>
+
+                            <div style="display:flex; justify-content:center; gap:12px; margin-top:8px;">
+                                <button type="submit">Enviar via WhatsApp</button>
+                                <button type="button" class="small-btn" onclick="openWhatsAppDirect()">Abrir WhatsApp
+                                    (rápido)</button>
+                            </div>
+
+                            <div class="booking-note">A solicitar aparecerá direto no WhatsApp do barbeiro. Cheque se a
+                                data/horário estão corretos antes de enviar.</div>
+                        </form>
+
+                        <!-- contatos rápidos -->
+                        <div class="contact-cards" style="margin-top:18px;">
+                            <div class="contact-card">
+                                <i class="fa-solid fa-phone"></i>
+                                <h4 style="color:#fff;">Telefone</h4>
+                                <a href="tel:+557598078753">+55 (75) 9 9807-8753</a>
+                            </div>
+
+                            <div class="contact-card">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <h4 style="color:#fff;">WhatsApp</h4>
+                                <a href="https://wa.me/557598078753" target="_blank" rel="noopener noreferrer">Enviar
+                                    mensagem</a>
+                            </div>
+
+                            <div class="contact-card">
+                                <i class="fa-solid fa-clock"></i>
+                                <h4 style="color:#fff;">Horário</h4>
+                                <div class="hours">Seg - Sex: 08:00 - 20:00<br>Sáb: 08:00 - 17:00</div>
+                            </div>
+                        </div>
+
+                        <p style="color:var(--muted); margin-top:26px;">Endereço: xxxxxxxxx - Venha ficar estiloso!</p>
+                    </div>
+                </section>
+
+            </div> <!-- fim content-wrapper -->
+
+            <!-- RODAPÉ -->
+            <footer>
+                <div class="footer-container">
+                    <div>
+                        <strong style="color:#fff;">Barbearia Barber DUO</strong>
+                        <div style="font-size:.9rem; color:var(--muted);">Atendimento com qualidade e estilo.</div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/heverton_barbe01?igsh=M2FzNGZpMGN0NGpi" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@heverton_207?is_from_webapp=1&sender_device=pc"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/barbepedro.0?igsh=MW9kMGRqM243Yjc5cQ==" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@pedro_.snt7?is_from_webapp=1&sender_device=pc"
+                            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <div style="color:var(--muted); font-size:.9rem;">&copy; 2025 Barbearia Barber DUO</div>
+                </div>
+            </footer>
+
+            <!-- MODAL (mantive) -->
+            <div id="service-modal-overlay" class="modal-overlay">
+                <div class="modal-content">
+                    <button class="close-modal-btn">&times;</button>
+                    <div id="modal-body"></div>
+                </div>
+            </div>
+
+            <!-- TOAST -->
+            <div id="toast" class="toast"></div>
+
+            <!-- SCRIPTS -->
+            <script>
+                // Número do barbeiro (formato internacional sem '+')
+                const BARBER_WHATSAPP = '557598078753';
+
+                const bookingForm = document.getElementById('booking-form');
+                const toastEl = document.getElementById('toast');
+
+                function showToast(message, type = 'success') {
+                    toastEl.innerText = message;
+                    toastEl.className = 'toast ' + (type === 'success' ? 'success' : 'error');
+                    toastEl.style.display = 'block';
+                    setTimeout(() => {
+                        toastEl.style.display = 'none';
+                    }, 4500);
+                }
+
+                // Gera a mensagem e abre o WhatsApp (usado no submit principal)
+                function handleBookingWhatsapp(e) {
+                    e.preventDefault();
+
+                    const client_name = document.getElementById('client-name').value.trim();
+                    const client_phone = document.getElementById('client-phone').value.trim();
+                    const client_email = document.getElementById('client-email').value.trim();
+                    const service = document.getElementById('service-select').value;
+                    const date = document.getElementById('date').value;
+                    const time = document.getElementById('time').value;
+                    const barber = document.getElementById('barber').value;
+                    const notes = document.getElementById('notes').value.trim();
+
+                    if (!client_name || !client_phone || !date || !time || !service) {
+                        showToast('Preencha: nome, telefone, data, horário e serviço.', 'error');
+                        return;
+                    }
+
+                    // Monta a mensagem com quebras de linha
+                    let msg = `Olá, gostaria de agendar um horário 💈%0A%0A`;
+                    msg += `👤 Nome: ${encodeURIComponent(client_name)}%0A`;
+                    msg += `📱 WhatsApp: ${encodeURIComponent(client_phone)}%0A`;
+                    if (client_email) msg += `✉️ E-mail: ${encodeURIComponent(client_email)}%0A`;
+                    msg += `✂️ Serviço: ${encodeURIComponent(service)}%0A`;
+                    msg += `📅 Data: ${encodeURIComponent(date)}%0A`;
+                    msg += `⏰ Horário: ${encodeURIComponent(time)}%0A`;
+                    msg += `🧑‍🔧 Barbeiro: ${encodeURIComponent(barber)}%0A`;
+                    if (notes) msg += `📝 Observações: ${encodeURIComponent(notes)}%0A`;
+                    msg += `%0AEnviado pelo site Barbearia Barber DUO.`;
+
+                    const url = `https://wa.me/${557598078753}?text=${msg}`;
+
+                    // Tenta abrir em nova aba (WhatsApp Web / app)
+                    window.open(url, '_blank');
+
+                    showToast('Abrindo WhatsApp... confirme o envio no app.', 'success');
+
+                    // opcional: limpar o formulário
+                    bookingForm.reset();
+                }
+
+                // Botão alternativo: abre WhatsApp sem submissão (mesma lógica)
+                function openWhatsAppDirect() {
+                    const client_name = document.getElementById('client-name').value.trim();
+                    const client_phone = document.getElementById('client-phone').value.trim();
+                    const client_email = document.getElementById('client-email').value.trim();
+                    const service = document.getElementById('service-select').value;
+                    const date = document.getElementById('date').value;
+                    const time = document.getElementById('time').value;
+                    const barber = document.getElementById('barber').value;
+                    const notes = document.getElementById('notes').value.trim();
+
+                    if (!client_name || !client_phone || !date || !time || !service) {
+                        showToast('Preencha: nome, telefone, data, horário e serviço.', 'error');
+                        return;
+                    }
+
+                    let msg = `Olá, gostaria de agendar um horário 💈%0A%0A`;
+                    msg += `👤 Nome: ${encodeURIComponent(client_name)}%0A`;
+                    msg += `📱 WhatsApp: ${encodeURIComponent(client_phone)}%0A`;
+                    if (client_email) msg += `✉️ E-mail: ${encodeURIComponent(client_email)}%0A`;
+                    msg += `✂️ Serviço: ${encodeURIComponent(service)}%0A`;
+                    msg += `📅 Data: ${encodeURIComponent(date)}%0A`;
+                    msg += `⏰ Horário: ${encodeURIComponent(time)}%0A`;
+                    msg += `🧑‍🔧 Barbeiro: ${encodeURIComponent(barber)}%0A`;
+                    if (notes) msg += `📝 Observações: ${encodeURIComponent(notes)}%0A`;
+                    msg += `%0AEnviado pelo site Barbearia Barber DUO.`;
+
+                    const url = `https://wa.me/${BARBER_WHATSAPP}?text=${msg}`;
+                    window.open(url, '_blank');
+                }
+            </script>
+
+            <!-- SCRIPTS EXISTENTES (modal dos serviços, observer etc.) -->
+            <script>
+                // ----- Modal de detalhes dos serviços -----
+                const serviceCards = document.querySelectorAll('.service-card');
+                const modalOverlay = document.getElementById('service-modal-overlay');
+                const modalBody = document.getElementById('modal-body');
+                const closeModalBtn = document.querySelector('.close-modal-btn');
+
+                function openModal(card) {
+                    const title = card.querySelector('h4').outerHTML;
+                    const fullTextEl = card.querySelector('.full-text');
+                    const fullTextContent = fullTextEl ? fullTextEl.innerHTML : ('<p>' + card.querySelector('.service-summary').innerText + '</p>');
+                    modalBody.innerHTML = title + fullTextContent;
+                    modalOverlay.classList.add('is-active');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeModal() {
+                    modalOverlay.classList.remove('is-active');
+                    document.body.style.overflow = 'auto';
+                }
+
+                serviceCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('service-link')) {
+                            openModal(card);
+                        } else {
+                            openModal(card);
+                        }
+                    });
+                });
+
+                closeModalBtn.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', (event) => {
+                    if (event.target === modalOverlay) closeModal();
+                });
+
+                // ----- animação de rolagem (IntersectionObserver) -----
+                const cardsToAnimate = document.querySelectorAll('.service-card');
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                cardsToAnimate.forEach(card => observer.observe(card));
+            </script>
+
+</body>
+
+</html>
