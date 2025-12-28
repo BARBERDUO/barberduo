@@ -164,3 +164,11 @@ body {
         .gallery-grid { grid-template-columns:1fr; }
     }
 
+    .logo-img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
