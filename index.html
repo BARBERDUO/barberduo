@@ -303,16 +303,15 @@
                         <div class="field">
                             <label for="barber-input">Barbeiro (opcional)</label>
 
-                            <!-- BOTÕES DOS BARBEIROS: substitui o select -->
+                        
                             <div class="barber-buttons" role="tablist" aria-label="Escolha do barbeiro">
-                                <!-- Nota: data-barber-phone usa os DDD + país já no formato '5575XXXXXXXX' -->
+                              
                                 <button type="button" class="barber-btn" data-barber-name="Heverton"
                                     data-barber-phone="557588022853">Heverton</button>
                                 <button type="button" class="barber-btn" data-barber-name="Pedro"
                                     data-barber-phone="557598078753">Pedro</button>
                             </div>
 
-                            <!-- mantemos inputs hidden para compatibilidade -->
                             <input type="hidden" id="barber-input" name="barber" value="Indiferente">
                             <input type="hidden" id="barber-phone" name="barber_phone" value="557598078753">
 
@@ -441,7 +440,7 @@
                 });
             });
 
-            // intercepta reset para manter Indiferente ativo após reset
+           
             if (bookingForm) {
                 const originalReset = bookingForm.reset;
                 bookingForm.reset = function () {
@@ -454,7 +453,7 @@
                 };
             }
 
-            // inicializa com Indiferente ativo (sem toast)
+  
             document.addEventListener('DOMContentLoaded', () => {
                 const indBtn = document.querySelector('.barber-btn.indifferent');
                 const phone = indBtn ? indBtn.dataset.barberPhone : '';
@@ -469,7 +468,7 @@
             }
         })();
 
-        // Função para coletar valores do formulário (usa barber hidden)
+       
         function getFormValues() {
             const client_name = document.getElementById('client-name').value.trim();
             const client_phone = document.getElementById('client-phone').value.trim();
@@ -504,7 +503,7 @@
             if (notes) msg += `📝 Observações: ${encodeURIComponent(notes)}%0A`;
             msg += `%0AEnviado pelo site Barbearia Barber DUO.`;
 
-            // se barber_phone vazio, usa número padrão BARBER_WHATSAPP
+       
             const targetNumber = barber_phone && barber_phone.length ? barber_phone : BARBER_WHATSAPP;
             const url = `https://wa.me/${targetNumber}?text=${msg}`;
 
@@ -592,3 +591,4 @@
 
 
 </html>
+
